@@ -13,7 +13,7 @@ public class GeometriaTest {
 	
 	private Geometria geo;
 	private App app;
-
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -32,76 +32,75 @@ public class GeometriaTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
+	
+	@Test
+	public void testApp() {
+		
+		app.main(new String[0]);
+	}
 
 	@Test
 	public void testAreacuadrado() {
 		
-		Geometria geometria = new Geometria();
-		int result = geometria.areacuadrado(4);
+		int result = geo.areacuadrado(4);
 		assertEquals(16, result);
 	}
 
 	@Test
 	public void testAreatriangulo() {
 		
-	    Geometria geometria = new Geometria();
-	    int result = geometria.areatriangulo(5, 6);
+	    int result = geo.areatriangulo(5, 6);
 	    assertEquals(15, result);
 	}
 
 	@Test
 	public void testArearectangulo() {
 		
-	    Geometria geometria = new Geometria();
-	    int result = geometria.arearectangulo(7, 8);
+	    int result = geo.arearectangulo(7, 8);
 	    assertEquals(56, result);
 	}
 
 	@Test
 	public void testAreapentagono() {
 		
-	    Geometria geometria = new Geometria();
-	    int result = geometria.areapentagono(4, 9);
+	    int result = geo.areapentagono(4, 9);
 	    assertEquals(18, result);
 	}
 
 	@Test
 	public void testArearombo() {
 		
-	    Geometria geometria = new Geometria();
-	    int result = geometria.arearombo(10, 5);
+	    int result = geo.arearombo(10, 5);
 	    assertEquals(25, result);
 	}
 
 	@Test
 	public void testArearomboide() {
 		
-	    Geometria geometria = new Geometria();
-	    int result = geometria.arearomboide(9, 3);
+	    int result = geo.arearomboide(9, 3);
 	    assertEquals(27, result);
 	}
 
 	@Test
 	public void testAreatrapecio() {
 		
-	    Geometria geometria = new Geometria();
-	    int result = geometria.areatrapecio(3, 5, 6);
+	    int result = geo.areatrapecio(3, 5, 6);
 	    assertEquals(24, result);
 	}
 
 
 	@Test
 	public void testFigura() {
-		Geometria geometria = new Geometria();
-		assertEquals("cuadrado", geometria.figura(1));
-		assertEquals("Circulo", geometria.figura(2));
-		assertEquals("Triangulo", geometria.figura(3));
-		assertEquals("Rectangulo", geometria.figura(4));
-		assertEquals("Pentagono", geometria.figura(5));
-		assertEquals("Rombo", geometria.figura(6));
-		assertEquals("Romboide", geometria.figura(7));
-		assertEquals("Trapecio", geometria.figura(8));
-		assertEquals("Default", geometria.figura(9));
+
+		assertEquals("cuadrado", geo.figura(1));
+		assertEquals("Circulo", geo.figura(2));
+		assertEquals("Triangulo", geo.figura(3));
+		assertEquals("Rectangulo", geo.figura(4));
+		assertEquals("Pentagono", geo.figura(5));
+		assertEquals("Rombo", geo.figura(6));
+		assertEquals("Romboide", geo.figura(7));
+		assertEquals("Trapecio", geo.figura(8));
+		assertEquals("Default", geo.figura(9));
 	}
 	
 	@Test
@@ -141,6 +140,41 @@ public class GeometriaTest {
 		
 		String print = "Campos --> " + testId + testNombre + testArea;
 	}
-
+	
+	@Test
+	public void testConstructor() {
+		
+		int testId = 30;
+		Geometria geom = new Geometria(testId);
+		assertEquals(testId, geom.getId());
+	}
+	
+	@Test
+	public void testAreaCirculo() {
+		
+		double resultado = geo.areaCirculo(5);
+		assertEquals(77, resultado, 2);
+	}
+	
+	@Test
+	public void testAreaTrianguloCero() {
+		
+		int resultado = geo.areatriangulo(0, 2);
+		assertEquals(0, resultado, 1);
+	}
+	
+	@Test
+	public void testAreaCuadradoCero() {
+		
+		int resultado = geo.areacuadrado(0);
+		assertEquals(0, resultado);
+	}
+	
+	@Test
+	public void testAreaCuadradoValorNulo() {
+		
+		int resultado = geo.areacuadrado(-2);
+		assertEquals(4, resultado);
+	}
+	
 }
-
